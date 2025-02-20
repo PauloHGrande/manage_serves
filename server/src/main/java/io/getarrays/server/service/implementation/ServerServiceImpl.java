@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Collection;
+import java.util.Random;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.getarrays.server.enumeration.Status;
 import io.getarrays.server.model.Server;
@@ -32,8 +34,8 @@ public class ServerServiceImpl implements ServerService {
 	}
 
 	private String setServerImageUrl() {
-		// TODO Auto-generated method stub
-		return null;
+		String[] imageNames = {"server1.png","server2.png","server3.png","server4.png"};
+		return ServletUriComponentsBuilder.fromCurrentContextPath().path("/server/image/" + imageNames[new Random().nextInt(4)]).toUriString();
 	}
 
 	@Override
