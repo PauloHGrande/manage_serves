@@ -5,6 +5,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Collection;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import io.getarrays.server.enumeration.Status;
@@ -37,26 +38,27 @@ public class ServerServiceImpl implements ServerService {
 
 	@Override
 	public Collection<Server> list(int limit) {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("Fetching all servers");
+		return serverRepo.findAll(PageRequest.of(0, limit)).toList();
 	}
 
 	@Override
 	public Server get(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("Fetching servers by ID: {}", id); 
+		return serverRepo.findById(id).get();
 	}
 
 	@Override
 	public Server update(Server server) {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("Updating server: {}", server.getName());
+		return serverRepo.save(server);
 	}
 
 	@Override
 	public Boolean delete(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("Deleting server by ID: {}", id);
+		serverRepo.deleteById(id);
+		return true;
 	}
 
 	@Override
