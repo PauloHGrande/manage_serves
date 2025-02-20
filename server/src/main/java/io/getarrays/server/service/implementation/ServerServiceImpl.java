@@ -2,7 +2,6 @@ package io.getarrays.server.service.implementation;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Collection;
 import java.util.Random;
 
